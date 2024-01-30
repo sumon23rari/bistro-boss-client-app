@@ -14,6 +14,8 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../pages/Dashboard/UpdateItems/UpdateItems";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 
 
 export const router=createBrowserRouter([
@@ -52,10 +54,18 @@ export const router=createBrowserRouter([
         element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> ,
         children: [
           {
+            path:'userHome',
+            element:<UserHome></UserHome>
+          },
+          {
             path: 'cart',
             element: <Cart></Cart>
           },
         //   admin route
+        {
+          path:'adminHome',
+          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
           {
             path:'users',
             element:<AdminRoute><Allusers></Allusers></AdminRoute> 
@@ -71,7 +81,7 @@ export const router=createBrowserRouter([
           {
             path:'updateItem/:id',
             element:<AdminRoute><UpdateItems></UpdateItems></AdminRoute>,
-            loader:({params})=>fetch(`http://localhost:8000/menu/${params.id}`)
+            loader:({params})=>fetch(`https://bistro-boss-server-nine-eta.vercel.app/menu/${params.id}`)
           },
           {
 

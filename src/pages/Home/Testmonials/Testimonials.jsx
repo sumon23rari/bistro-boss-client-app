@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 const Testimonials = () => {
     const [reviews,setReviews]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:8000/reviews')
+        fetch('https://bistro-boss-server-nine-eta.vercel.app/reviews')
         .then(res => res.json())
         .then(data => setReviews(data))
     },[])
